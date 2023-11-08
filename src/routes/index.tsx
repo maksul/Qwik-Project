@@ -1,15 +1,41 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-import Counter from "~/components/starter/counter/counter";
-import Hero from "~/components/starter/hero/hero";
-import Infobox from "~/components/starter/infobox/infobox";
-import Starter from "~/components/starter/next-steps/next-steps";
+// import Counter from "~/components/starter/counter/counter";
+// import Hero from "~/components/starter/hero/hero";
+// import Infobox from "~/components/starter/infobox/infobox";
+// import Starter from "~/components/starter/next-steps/next-steps";
 
 export default component$(() => {
+  const name = useSignal ("maksul")
+
+  const person = useStore({name: "maksul", Age: 30})
+
+  const blogs = useStore([
+    {id:1, title:"my first blog"},
+    { id:2, title: "my Second blog"},
+    {id:3, title: "my third blog"}
+
+  ])
   return (
     <>
-      <Hero />
+      
+
+    <h2>okay okay</h2>
+
+    <p>Hello, {name.value}</p>
+
+    <p>Hello, {person.name} + {person.Age}</p>
+
+    <button onClick$={() => name.value = "suleiman"}>Click Me</button>
+    <button onClick$={() => person.name = "makhazat"}>Click me again</button>
+
+    {blogs.map(blog => (
+       <div key={blog.id}>{blog.title}</div>
+    ))}
+
+    <button onClick$={() => blogs.pop()}>Remove a blog</button>
+      {/* <Hero />
       <Starter />
 
       <div role="presentation" class="ellipsis"></div>
@@ -96,17 +122,24 @@ export default component$(() => {
             </ul>
           </Infobox>
         </div>
-      </div>
+      </div> */}
     </>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Maksul Live",
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content: "A blog site about everything Maksul",
     },
   ],
+
+  links: [
+    {
+      rel:"stylesheet",
+      href: "somestylesheet.com/styles.css"
+    }
+  ]
 };

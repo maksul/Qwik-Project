@@ -1,43 +1,28 @@
-import { component$ } from "@builder.io/qwik";
-import { QwikLogo } from "../icons/qwik";
-import styles from "./header.module.css";
+
+import ImgPassport from '/Public/passport.jpg?jsx';
+import { component$, useStyles$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
+import styles from "./header.css?inline";
 
 export default component$(() => {
+  useStyles$(styles);
   return (
-    <header class={styles.header}>
-      <div class={["container", styles.wrapper]}>
-        <div class={styles.logo}>
-          <a href="/" title="qwik">
-            <QwikLogo height={50} width={143} />
-          </a>
-        </div>
-        <ul>
-          <li>
-            <a
-              href="https://qwik.builder.io/docs/components/overview/"
-              target="_blank"
-            >
-              Docs
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://qwik.builder.io/examples/introduction/hello-world/"
-              target="_blank"
-            >
-              Examples
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://qwik.builder.io/tutorial/welcome/overview/"
-              target="_blank"
-            >
-              Tutorials
-            </a>
-          </li>
-        </ul>
-      </div>
-    </header>
+     <header>
+        <nav>
+          <ImgPassport alt="logo" />
+          <h1>Maksul</h1>
+          <ul>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/about">About</Link>
+            </li>
+            <li>
+              <Link href="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+     </header>
   );
 });

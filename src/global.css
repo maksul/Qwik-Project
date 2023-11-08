@@ -78,3 +78,25 @@ body {
   padding: 0;
   line-height: inherit;
 }
+ .container{
+  max-width: 1260px;
+  margin: 40px auto;
+  padding: 10px;
+ }
+
+  footer{
+  background: #e05454;
+  padding: 10px;
+  text-align: center;
+  flex-grow: 1;
+ }
+
+ button{
+  background-color: var(--qwik-dark-purple);
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-family: "Poppins";
+ }
